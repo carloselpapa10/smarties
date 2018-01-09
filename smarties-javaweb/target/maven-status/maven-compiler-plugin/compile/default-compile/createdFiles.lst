@@ -1,0 +1,5 @@
+com\socialdevelop\services\UserService.class
+com\socialdevelop\entities\User.class
+com\socialdevelop\controllers\DefaultController.class
+com\socialdevelop\mappers\UserMapper.class
+com\socialdevelop\controllers\AppController.class
