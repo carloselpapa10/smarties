@@ -27,7 +27,7 @@ public class AppController {
     
     @RequestMapping("/main")
     public String principal(){
-        return "home/index";
+        return "home-page";
     }
     
     @RequestMapping(value = "/login", method = RequestMethod.POST)
