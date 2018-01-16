@@ -21,6 +21,7 @@
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
           http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+          http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
           ">
 
 	<context:component-scan base-package="com.project.controllers" />
@@ -58,22 +59,6 @@
         <property name="order" value="0"/>
     </bean>
 	
-	<!--<bean id="clientFactory" class="org.springframework.integration.mqtt.core.DefaultMqttPahoClientFactory">
-	    <property name="userName" value="${mqtt.username}"/>
-	    <property name="password" value="${mqtt.password}"/>
-	</bean>
-	
-	  <int-mqtt:message-driven-channel-adapter 
-		id="mqttInbound"
-	    client-id="${mqtt.default.client.id}.src"
-	    url="${mqtt.url}"
-	    topics="sometopic"
-	    client-factory="clientFactory"
-	    channel="output"/>-->
-	
-	
-	
-
 	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />

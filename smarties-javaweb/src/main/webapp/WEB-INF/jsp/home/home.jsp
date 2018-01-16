@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1>MQTT web sockets test!</h1>
+<h1>Hello World! Smart Home!</h1>
 
 <div id="broker">
 	<h2>Broker</h2>
@@ -34,4 +34,4 @@
 
 </body>
 </html>
-<script src="<c:url value='/resources/js/tmo.js' />"></script> 
+<script src="<c:url value='/resources/js/smart-home.js' />"></script> 

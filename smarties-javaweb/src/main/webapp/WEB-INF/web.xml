@@ -8,6 +8,7 @@
         <param-value>
             /WEB-INF/application-context.xml
             /WEB-INF/dispatcher-servlet.xml
+            /WEB-INF/mqtt.xml
         </param-value>
     </context-param>
     

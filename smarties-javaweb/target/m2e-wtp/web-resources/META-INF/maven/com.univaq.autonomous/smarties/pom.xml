@@ -17,6 +17,13 @@
         <tiles.version>3.0.4</tiles.version>
     </properties>
     
+    <repositories>
+	    <repository>
+	        <id>Eclipse Paho Repo</id>
+	        <url>https://repo.eclipse.org/content/repositories/paho-releases/</url>
+	    </repository>
+	</repositories>
+    
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
@@ -100,11 +107,17 @@
 			<version>${tiles.version}</version>
 		</dependency>
 		
-		<dependency>  
-		    <groupId>org.springframework.integration</groupId>  
-		    <artifactId>spring-integration-core</artifactId>  
-		    <version>3.0.0.RELEASE</version>  
-		  </dependency> 
+		<dependency>
+		    <groupId>org.springframework.integration</groupId>
+		    <artifactId>spring-integration-mqtt</artifactId>
+		    <version>4.0.5.RELEASE</version>
+		</dependency>	
+		
+		<dependency>
+	        <groupId>org.eclipse.paho</groupId>
+	        <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+	        <version>1.0.2</version>
+	    </dependency>
         
     </dependencies>
 

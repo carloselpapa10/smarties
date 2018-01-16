@@ -1,8 +1,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+
+<script src="<c:url value='/resources/js/jquery-1.7.2.min.js' />"></script>
+<script src="<c:url value='/resources/js/mosquitto.js' />"></script>
+
 <!-- 
-<script src="<c:url value='/resources/js/jquery.min.js' />"></script>
+<script src="<c:url value='/resources/js/mqttws31.js' />"></script>
+
 <script src="<c:url value='/resources/js/bootstrap.min.js' />"></script>
 <script src="<c:url value='/resources/js/scripts.js' />"></script>
 <script src="<c:url value='/resources/js/jquery-ui-1.11.4.custom.min.js' />"></script>
@@ -18,5 +23,5 @@
 <c:if test="${init != null and init == 'home'}">
     <script src="<c:url value='/resources/angularjs/main.js' />"></script>
 </c:if>
-
  -->
+

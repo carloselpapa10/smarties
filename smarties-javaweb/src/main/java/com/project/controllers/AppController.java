@@ -30,6 +30,11 @@ public class AppController {
         return "home-page";
     }
     
+    @RequestMapping("/test")
+    public String test(){
+        return "index-page";
+    }
+    
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginUser(@RequestParam("username") String usr, @RequestParam("password") String pwd, ModelMap model){
         
