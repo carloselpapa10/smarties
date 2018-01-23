@@ -16,6 +16,10 @@
 	<input class="but" id="connect-button" value="Connect" type="button">
 	<input class="but" id="disconnect-button" value="Disconnect" type="button">
 </div>
+<div id="home">
+	<h3>Light</h3>
+	<div id="light_1" class="light-off"></div>
+</div>
 <div id="publish">
 	<h2>Publish</h2>
 	<p>Topic: <input class="txt" id="pub-topic-text" value="" type="text"></p>

@@ -16,11 +16,8 @@ Steps to configure the mosquitto environment
 	
 	e. Ensure that Mosquitto broker is running
 		$sudo service mosquitto status
-		
-	f. Ensure that Mosquitto broker is running
-		$sudo service mosquitto status 
-		
-	h. Testing		
+				
+	f. Testing		
 		Use two terminals to test mqtt protocol
 		
 		$mosquitto_sub -h localhost -t "mqtt" -v

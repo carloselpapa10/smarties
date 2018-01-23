@@ -2,8 +2,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+<link rel="stylesheet" href="<c:url value='/resources/css/smart-home.css' />" media="screen">
+
 <!--  
-<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.css' />" media="screen">
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css' />" media="screen">
 <link rel="stylesheet" href="<c:url value='/resources/css/style.css' />" media="screen">
 <link rel="stylesheet" href="<c:url value='/resources/css/animate.css' />" media="screen">
