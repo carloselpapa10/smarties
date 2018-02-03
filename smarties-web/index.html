@@ -21,6 +21,19 @@
 
 		<div id="house" class="house">
 
+
+			<img class="sofa" width="150" height="150" src="images/bigsofa.png" alt="sofa">
+			<img class="tv" width="180" height="90" src="images/tv.png" alt="tv">
+			<img class="sofa2" width="150" height="80"  src="images/sofa2.png">
+			<img class="table" width="180" height="150" src="images/table.png">
+			<img class="gas" width="120" height="90" src="images/gas.png">
+			<img class="counter" width="90" height="65" src="images/counter.png">
+			<img class="counter2" width="90" height="65" src="images/counter.png">
+			<img class="counter3" width="90" height="65" src="images/counter.png">
+			<img class="fridge" width="90" height="65" src="images/fridge.png">
+			
+			
+			
 			<div id="light_1" class="light-off" style="top:240px;  left:500px" ></div>
 			<input type="text" name="temperature_1" id="temperature_1" class="temp" style="top:240px; left:10px;" placeholder="20" value="20">
 			<div id="t1" class="temperature" style="top:255px; left:10px;"></div>
@@ -89,23 +102,38 @@
 </html>
 
 <script type="text/javascript">
-var img = new Image();
-img.src = 'images/bed.png';
+var bed = new Image();
+bed.src = 'images/bed.png';
 var ctxbed1 = document.getElementById('bed1Canvas').getContext('2d');
 var ctxbed2 = document.getElementById('bed2Canvas').getContext('2d');
-img.onload = function()
+bed.onload = function()
 {
-	ctxbed1.drawImage(img, 100, -5, 90, 90);
-	ctxbed2.drawImage(img, 100, -5, 90, 90);
+	ctxbed1.drawImage(bed, 100, -5, 90, 90);
+	ctxbed2.drawImage(bed, 100, -5, 90, 90);
 };
-var table=new Image();
-table.src='images/table.png';
 
-var ctxkitchen=document.getElementById('kitchenCanvas').getContext('2d');
-ctxkitchen.mozImageSmoothingEnabled = false;  // firefox
-ctxkitchen.imageSmoothingEnabled = false;
-table.onload=function() {
-	ctxkitchen.drawImage(table,50,50,50,77);
+
+var toilet=new Image();
+toilet.src='images/toilet.png';
+var ctxbathroom=document.getElementById('bathCanvas').getContext('2d');
+toilet.onload=function()
+{
+		ctxbathroom.drawImage(toilet,-5,50,100,70);
+}
+
+var bath=new Image();
+bath.src='images/bath.png';
+bath.onload=function () 
+{
+	ctxbathroom.drawImage(bath,0,-20,200,100);
+}
+var sink=new Image();
+sink.src='images/sink.png';
+sink.onload=function()
+{
+	ctxbathroom.drawImage(sink,230,100,80,40)
+}
+
 }
 </script>
 
