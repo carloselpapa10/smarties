@@ -139,19 +139,46 @@ rule "bed2LightOff"
     end
     
     
-/* SAFETY HOUSE HIGH LEVEL HOAL */
+/* SAFETY HOUSE HIGH LEVEL GOAL */
 rule "Send email when detected a presence"
 	when 
-		Item Motions received update or
-		Item Doors received update or
-		Item Windows received update 
+		Item Motions changed 
 	then
 		if(safetyHouse.state == ON){
-			say("send an email")
-			//sendMail("c.avendano10@gmail.com", "Detected a presence", "A presence has been detected. Attached is an image taken by the camera.")
+			
+			if(Motions.members.filter(i | i.state == ON).size >0 )
+			{
+				//Motions.members.forEach(i | say(i))
+				if (alarm_presence.state != ON) {
+	                alarm_presence.postUpdate(ON)
+	            } 									
+			}
 		}		
 				
 end
+
+rule "Presence alarm_presence"
+    when
+        Item alarm_presence received update ON
+    then
+        // turn on all lights
+        sendCommand(Lights,ON)
+        
+        // send an email
+        sendMail("c.avendano10@gmail.com", "Detected a presence", "A presence has been detected. Attached is an image taken by the camera.", "http://localhost/cam/index.jpeg")
+    end
+    
+rule "Presence alarm_fire"
+    when
+        Item alarm_fire received update ON
+    then
+        // turn on all lights
+        sendCommand(Lights,ON)
+        
+        // send an email
+        sendMail("c.avendano10@gmail.com", "ALERT! The house is burning", "The temperature sensors reported a value above 45 degrees", "http://localhost/cam/fire.jpeg")
+    end
+
 
 rule "close everything when safety option is activated"
     when   
@@ -160,7 +187,8 @@ rule "close everything when safety option is activated"
          	sendCommand(Doors, OFF)
          	sendCommand(Windows, OFF)
          	sendCommand(Lights, OFF)
-         	sendCommand(Motions, OFF)          
+         	sendCommand(Motions, OFF)
+         	alarm_presence.state = OFF       
 	end
 
 /* FRESH HOUSE MODE */
@@ -219,16 +247,52 @@ rule "Turn off all lights, motions, doors and windows when the system starts"
 		sendCommand(Motions, OFF)
 		sendCommand(Doors, OFF)
 		sendCommand(Temperatures, 20)
+		alarm_fire.state = OFF  
 	end
 	
 rule "send Email if temperature above tempMax"
 when
 	Item Temperatures received update
 	then
-	if(Temperatures.members.filter(i| i.state >tempMax).size > 0){
-		
-			say("send an email - Fire")
-			//sendMail("c.avendano10@gmail.com", "Detected a presence", "A presence has been detected. Attached is an image taken by the camera.")
+		if(Temperatures.members.filter(i| i.state >tempMax).size > 0){
+			if (alarm_fire.state != ON) {
+		    	alarm_fire.postUpdate(ON)
+		    }
 		}		
+	end
+
+rule "Turn on a motion sensor when a door_1 is opened."
+when
+	Item door_1 changed from OFF to ON 
+	then
+		sendCommand(motion_1,ON)
+	end
+
+rule "Turn on a motion sensor when a door_2 is opened."
+when
+	Item door_2 changed from OFF to ON 
+	then
+		sendCommand(motion_2,ON)
+	end
+	
+rule "Turn on a motion sensor when a door_3 is opened."
+when
+	Item door_3 changed from OFF to ON 
+	then
+		sendCommand(motion_3,ON)
+	end
+	
+rule "Turn on a motion sensor when a door_4 is opened."
+when
+	Item door_4 changed from OFF to ON 
+	then
+		sendCommand(motion_4,ON)
+	end
+	
+rule "Turn on a motion sensor when a door_5 is opened."
+when
+	Item door_5 changed from OFF to ON 
+	then
+		sendCommand(motion_5,ON)
 	end
 	

@@ -1,8 +1,8 @@
 Group Sonos
 Group GeneralInfo
 
-Switch presence_office <present>
-Switch presence_livingRoom <present>
+Switch alarm_presence
+Switch alarm_fire
 
 Group Lights_Random
 Group Lights
@@ -50,33 +50,5 @@ Number temp_5 "Temperature [%.1f °C]" <temperature> (Temperatures) {mqtt="<[myb
 
 Number humidity "Humidity" <water>
 
-
-Switch LightOffice <light> (Lights_Random) {mqtt=">[mybroker:myhouse/office/light:command:ON:1],>[mybroker:myhouse/office/light:command:OFF:0],<[mybroker:myhouse/office/light:state:MAP(light.map)]"}
-Switch LightLivingRoom <light> (Lights_Random)
-
-Group Weather_Chart		(Weather)
-//Number Weather_Temperature 		"Outside Temperature [%.1f °C]"	<temperature> (Weather_Chart) {mqtt="<[mybroker:myhouse/outsidetemperature:state:default]"}
-
-Number Weather_Temperature 		"Outside Temperature [%.1f °C]"	<temperature> (Weather_Chart) { http="<[http://192.168.2.103/vwmon/json/vaillant_json.php:10000:JSONPATH($.history[0].outsidetemp)]"}
-Number Weather_Temp_Max 		"Todays Maximum [%.1f °C]"	<temperature> (Weather_Chart)
-Number Weather_Temp_Min 		"Todays Minimum [%.1f °C]"	<temperature> (Weather_Chart)
-Number Weather_Chart_Period		"Chart Period"
-DateTime Weather_LastUpdate		"Last Update [%1$ta %1$tR]"	<clock>
-
-
-Number VolumeSonos "Sonos Volume" (Sonos) { sonos="[office:volume]" }
-Switch ledstatus     "LedStatus"     (Sonos)   {sonos="[ON:office:led], [OFF:office:led]", autoupdate="true"}
-String currenttrack  "CurrentTrack"  (Sonos)   {sonos="[RINCON_5CAAFD466A4801400:currenttrack]", autoupdate="true"}
-Switch PlayLivingRoom "Play/Pause"        (Sonos)   {sonos="[ON:office:play],[OFF:office:pause]", autoupdate="true"}
-Switch next       "Next track"        (Sonos)   {sonos="[ON:office:next]"}
-
-/* NTP binding demo item */
 DateTime		Date 	"Date [%1$tA, %1$td.%1$tm.%1$tY]"	<calendar>	(GeneralInfo) { ntp="Europe/Rome:it_IT" }
-
-
-Number radioStation	"Radio"		<network>
 Location DemoLocation "L'Aquila" (GeneralInfo)
-
-
-DateTime Sunrise_Time   	"Sunrise [%1$tH:%1$tM]"		{astro="planet=sun, type=rise, property=end"}
-DateTime Sunset_Time   		"Sunset [%1$tH:%1$tM]"		{astro="planet=sun, type=set, property=start"}
