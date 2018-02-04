@@ -421,16 +421,16 @@
 							break;
 						case "window_1":
 							if(payload == "1"){
-								$("#window_1").removeClass("window-close").addClass("window-open");
+								$("#window_1").removeClass("window-closed").addClass("window-open");
 							}else if(payload == "0"){
-								$("#window_1").removeClass("window-open").addClass("window-close");
+								$("#window_1").removeClass("window-open").addClass("window-closed");
 							}
 							break;
 						case "window_2":
 							if(payload == "1"){
-								$("#window_2").removeClass("window-close").addClass("window-open");
+								$("#window_2").removeClass("window-closed").addClass("window-open");
 							}else if(payload == "0"){
-								$("#window_2").removeClass("window-open").addClass("window-close");
+								$("#window_2").removeClass("window-open").addClass("window-closed");
 							}
 							break;
 						default:
@@ -462,16 +462,16 @@
 							break;
 						case "window_3":
 							if(payload == "1"){
-								$("#window_3").removeClass("window-close").addClass("window-open");
+								$("#window_3").removeClass("window-closed").addClass("window-open");
 							}else if(payload == "0"){
-								$("#window_3").removeClass("window-open").addClass("window-close");
+								$("#window_3").removeClass("window-open").addClass("window-closed");
 							}
 							break;
 						case "window_4":
 							if(payload == "1"){
-								$("#window_4").removeClass("window-close").addClass("window-open");
+								$("#window_4").removeClass("window-closed").addClass("window-open");
 							}else if(payload == "0"){
-								$("#window_4").removeClass("window-open").addClass("window-close");
+								$("#window_4").removeClass("window-open").addClass("window-closed");
 							}
 							break;
 						case "door_3":
@@ -510,9 +510,9 @@
 							break;
 						case "window_5":
 							if(payload == "1"){
-								$("#window_5").removeClass("window-close").addClass("window-open");
+								$("#window_5").removeClass("window-closed").addClass("window-open");
 							}else if(payload == "0"){
-								$("#window_5").removeClass("window-open").addClass("window-close");
+								$("#window_5").removeClass("window-open").addClass("window-closed");
 							}
 							break;
 						case "door_4":
@@ -551,9 +551,9 @@
 							break;
 						case "window_6":
 							if(payload == "1"){
-								$("#window_6").removeClass("window-close").addClass("window-open");
+								$("#window_6").removeClass("window-closed").addClass("window-open");
 							}else if(payload == "0"){
-								$("#window_6").removeClass("window-open").addClass("window-close");
+								$("#window_6").removeClass("window-open").addClass("window-closed");
 							}
 							break;
 						case "door_5":

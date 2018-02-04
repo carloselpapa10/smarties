@@ -103,15 +103,31 @@
 
 /*-----------furniture--------------*/
 
+.bath{
+  position: relative;
+  top: -145px;
+  left: 265px;
+}
+
+.sink{
+  position: relative;
+  top: -245px;
+  left: 198;
+}
+.toilet{
+  position: relative;
+  top: -110px;
+  left: 265px;
+}
 .bed1{
   position: relative;
-  top: -15px;
-  left: 500px;
+  top: -170px;
+  left: -90px;
 }
 .bed2{
   position: relative;
-  top:-15px;
-  left: 10px;
+  top:-170px;
+  left: 155px;
 }
 
 .table{
@@ -160,13 +176,13 @@
 .counter3{
   z-index: 2;
   position: relative;
-  top:240px;
+  top:200px;
   left:920px;
 }
 .fridge{
   z-index: 2;
   position: relative;
-  top:175px;
+  top:135px;
   left:826px;
 }
 

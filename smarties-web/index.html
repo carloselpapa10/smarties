@@ -31,14 +31,25 @@
 			<img class="counter2" width="90" height="65" src="images/counter.png">
 			<img class="counter3" width="90" height="65" src="images/counter.png">
 			<img class="fridge" width="90" height="65" src="images/fridge.png">
+			<img class="bed1" width="150" height="150" src="images/bed.png" >
+			<img class="bed2" width="150" height="150" src="images/bed.png" >
+			<img class="bath" width="130" height="130" src="images/bath.png" >
+			<img class="toilet" width="65" height="65" src="images/toilet.png" >
+			<!--
+			<img class="bed1" width="150" height="150" src="images/bed.png" >
+			<img class="bed2" width="150" height="150" src="images/bed.png" >
 			
+			<img class="bath" width="130" height="130" src="images/bath.png" >
+			<img class="toilet" width="65" height="65" src="images/toilet.png" >
+			<img class="sink" width="65" height="65" src="images/sink.png" >
+			-->
 			
 			
 			<div id="light_1" class="light-off" style="top:240px;  left:500px" ></div>
 			<input type="text" name="temperature_1" id="temperature_1" class="temp" style="top:240px; left:10px;" placeholder="20" value="20">
 			<div id="t1" class="temperature" style="top:255px; left:10px;"></div>
 			<div id="motion_1" class="motion-0" style="top:205px; left:990px;"></div>
-			<img class="sofa" width="100" height="100" src="images/bigsofa.png" alt="sofa">
+			<!--<img class="sofa" width="100" height="100" src="images/bigsofa.png" alt="sofa"> -->
 			<div id="door_1" class="door-closed" style="top:243px; left: 1005px;"></div>
 		<!-- kitchen canvas -->
 			<canvas id="kitchenCanvas" class="kitchencanvas">
@@ -100,42 +111,5 @@
 		
 	</body> 
 </html>
-
-<script type="text/javascript">
-var bed = new Image();
-bed.src = 'images/bed.png';
-var ctxbed1 = document.getElementById('bed1Canvas').getContext('2d');
-var ctxbed2 = document.getElementById('bed2Canvas').getContext('2d');
-bed.onload = function()
-{
-	ctxbed1.drawImage(bed, 100, -5, 90, 90);
-	ctxbed2.drawImage(bed, 100, -5, 90, 90);
-};
-
-
-var toilet=new Image();
-toilet.src='images/toilet.png';
-var ctxbathroom=document.getElementById('bathCanvas').getContext('2d');
-toilet.onload=function()
-{
-		ctxbathroom.drawImage(toilet,-5,50,100,70);
-}
-
-var bath=new Image();
-bath.src='images/bath.png';
-bath.onload=function () 
-{
-	ctxbathroom.drawImage(bath,0,-20,200,100);
-}
-var sink=new Image();
-sink.src='images/sink.png';
-sink.onload=function()
-{
-	ctxbathroom.drawImage(sink,230,100,80,40)
-}
-
-}
-</script>
-
 
 <script src="js/tmo.js"></script>
