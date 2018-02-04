@@ -1,6 +1,6 @@
 # smarties
 Sofware Engineering for Autonomous systems project
 
-OpenHab Framework
+openHAB Framework
 
 Project Name: smarties
