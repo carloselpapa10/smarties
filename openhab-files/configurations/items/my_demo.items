@@ -48,6 +48,8 @@ Number temp_3 "Temperature [%.1f °C]" <temperature> (Temperatures) {mqtt="<[myb
 Number temp_4 "Temperature [%.1f °C]" <temperature> (Temperatures) {mqtt="<[mybroker:myhouse/bathroom/temp_4:state:default]"}
 Number temp_5 "Temperature [%.1f °C]" <temperature> (Temperatures) {mqtt="<[mybroker:myhouse/bed/temp_5:state:default]"}
 
+Number noOneAtHome {mqtt="<[mybroker:myhouse/noOneAtHome:state:default]"}
+
 Number humidity "Humidity" <water>
 
 DateTime		Date 	"Date [%1$tA, %1$td.%1$tm.%1$tY]"	<calendar>	(GeneralInfo) { ntp="Europe/Rome:it_IT" }

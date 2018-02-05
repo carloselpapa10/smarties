@@ -4,8 +4,22 @@
 		var mosq = null;
 		function Page() {
 			var _this = this;
-			mosq = new Mosquitto();
-
+			mosq = new Mosquitto();			
+			
+			setInterval(function(){ 				
+				
+				$.get( "http://localhost:8090/noOneAtHome", function( data ) {
+				  	
+					if(data){
+						_this.publish("myhouse/noOneAtHome", "1");
+					}else{
+						_this.publish("myhouse/noOneAtHome", "0");
+					}
+						
+				});
+			
+			}, 60000);
+			
 			
 			$("#initialize_items").click(function(){
 				_this.publish("myhouse/livingroom/light_1", "0");

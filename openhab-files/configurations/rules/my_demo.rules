@@ -17,6 +17,17 @@ var Number tempMax = 45
 var Number tempMin = 10
 
 
+/* checking at database*/
+rule "NO ONE AT HOME AND safetyHouse IS OFF"
+    when   
+            Item noOneAtHome received update
+    then   
+    		if(safetyHouse.state != ON && noOneAtHome.state == 1){    			
+    			sendCommand(safetyHouse, ON) 
+    			sendMail("c.avendano10@gmail.com", "ALERT! Safety House turned ON", "Due nobody is at home the system turned ON the Safety House Mode")
+    		}            
+    end
+
 /* POWER SAVE MODE: turn off lights after 1 minute without motion*/
 
 rule "corLightOn"
