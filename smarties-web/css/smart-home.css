@@ -103,6 +103,230 @@
 
 /*-----------furniture--------------*/
 
+.inhabitant-1{
+  position: relative;
+  top: -205px;
+  left: -550px;
+}
+
+.inhabitant-2{
+  position: relative;
+  top: -248px;
+  left: -645px;
+}
+
+.inhabitant-3{
+  position: relative;
+  top: -248px;
+  left: -454px;
+}
+
+.inhabitant-4{
+  position: relative;
+  top: -93px;
+  left: -546px;
+  z-index: 999;
+}
+
+.inhabitant-5{
+  position: relative;
+  top: -40px;
+  left: -264px;
+  z-index: 999;
+}
+
+.inhabitant-6{
+  position: relative;
+  top: 112px;
+  left: -488px;
+  z-index: 999;
+}
+
+.inhabitant-7{
+  position: relative;
+  top: 112px;
+  left: 115px;
+  z-index: 999;
+}
+
+.inhabitant-8{
+  position: relative;
+  top: 180px;
+  left: -45px;
+  z-index: 999;
+}
+
+.inhabitant-9{
+  position: relative;
+  top: 180px;
+  left: -382px;
+  z-index: 999;
+}
+
+.inhabitant-10{
+  position: relative;
+  top: -86px;
+  left: -113px;
+  z-index: 999;
+}
+
+.inhabitant-11{
+  position: relative;
+  top: -138px;
+  left: -113px;
+  z-index: 999;
+}
+
+.inhabitant-12{
+  position: relative;
+  top: -244px;
+  left: -243px;
+  z-index: 999;
+}
+
+.inhabitant-13{
+  position: relative;
+  top: -86px;
+  left: 148px;
+  z-index: 999;
+}
+
+.inhabitant-14{
+  position: relative;
+  top: -135px;
+  left: 148px;
+  z-index: 999;
+}
+
+.inhabitant-15{
+  position: relative;
+  top: -194px;
+  left: 248px;
+  z-index: 999;
+}
+
+.inhabitant-16{
+  position: relative;
+  top: -39px;
+  left: 288px;
+  z-index: 999;
+}
+
+
+.inhabitant-red-hidden{
+  position: relative;
+  visibility: hidden;
+}
+
+.inhabitant-red-1{
+  position: relative;
+  top: -205px;
+  left: -599px;
+}
+
+.inhabitant-red-2{
+  position: relative;
+  top: -248px;
+  left: -694px;
+}
+
+.inhabitant-red-3{
+  position: relative;
+  top: -248px;
+  left: -503px;
+}
+
+.inhabitant-red-4{
+  position: relative;
+  top: -93px;
+  left: -595px;
+  z-index: 888;
+}
+
+.inhabitant-red-5{
+  position: relative;
+  top: -40px;
+  left: -313px;
+  z-index: 888;
+}
+
+.inhabitant-red-6{
+  position: relative;
+  top: 112px;
+  left: -537px;
+  z-index: 888;
+}
+
+.inhabitant-red-7{
+  position: relative;
+  top: 112px;
+  left: 67px;
+  z-index: 888;
+}
+
+.inhabitant-red-8{
+  position: relative;
+  top: 180px;
+  left: -93px;
+  z-index: 888;
+}
+
+.inhabitant-red-9{
+  position: relative;
+  top: 180px;
+  left: -430px;
+  z-index: 888;
+}
+
+.inhabitant-red-10{
+  position: relative;
+  top: -86px;
+  left: -161px;
+  z-index: 888;
+}
+
+.inhabitant-red-11{
+  position: relative;
+  top: -138px;
+  left: -162px;
+  z-index: 888;
+}
+
+.inhabitant-red-12{
+  position: relative;
+  top: -244px;
+  left: -291px;
+  z-index: 888;
+}
+
+.inhabitant-red-13{
+  position: relative;
+  top: -86px;
+  left: 100px;
+  z-index: 888;
+}
+
+.inhabitant-red-14{
+  position: relative;
+  top: -135px;
+  left: 99px;
+  z-index: 888;
+}
+
+.inhabitant-red-15{
+  position: relative;
+  top: -194px;
+  left: 199px;
+  z-index: 888;
+}
+
+.inhabitant-red-16{
+  position: relative;
+  top: -39px;
+  left: 240px;
+  z-index: 888;
+}
+
 .bath{
   position: relative;
   top: -145px;

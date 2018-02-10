@@ -4,9 +4,283 @@
 		var mosq = null;
 		function Page() {
 			var _this = this;
-			mosq = new Mosquitto();			
+			mosq = new Mosquitto();	
 			
-			setInterval(function(){ 				
+			var dataEvent = [];
+			var dataEventPre = new Array();
+			var index = 0;
+			
+			function addDataEvent(value){
+				data = {name:"event", val: value};
+				dataEvent[index]=data;				
+				
+				//url: 'http://localhost:8090/getPredictionAKOM',
+				//url: 'http://localhost:8090/getPredictionLZ78',
+				
+				lastLengthData=60;
+				
+				if(index >= lastLengthData){
+					$.ajax({
+						url: 'http://localhost:8090/getPredictionLZ78',
+						type: 'post',						
+						contentType: "application/json",
+						data: JSON.stringify(dataEvent.slice(dataEvent.length-lastLengthData,dataEvent.length)),						
+						success: function (data) {
+							if(data != null){
+								dataEventPre.push(data);
+								
+								$('#temperature_3').val(data);
+								changeInhabitantRedPosition(data);
+							}
+						}
+						
+					});
+				
+				}
+				
+				index++;
+			}
+			
+			function init_sequence(){
+				var firstEvent = 1;	
+				var nextEvent = nextMovement(1);
+				
+				openOffEffectorsNext(nextEvent);
+				changeInhabitantPosition(firstEvent, nextEvent);
+				openOffEffectorsCurrent(nextEvent);
+				
+				addDataEvent(nextEvent);
+				//storeEvent("event", nextEvent);
+				console.log("from = "+firstEvent+" - to = "+nextEvent);
+
+				setTimeout(function(){ 
+					setInterval(function(){ 
+						
+						firstEvent = nextEvent;		
+						nextEvent = nextMovement(firstEvent);
+						
+						openOffEffectorsNext(nextEvent);
+
+						changeInhabitantPosition(firstEvent, nextEvent);
+						openOffEffectorsCurrent(nextEvent);
+						
+						addDataEvent(nextEvent);
+						//storeEvent("event", nextEvent);
+						console.log("from = "+firstEvent+" - to = "+nextEvent);
+					}, 15000);
+
+				}, 2000);				
+			}
+			
+			function storeEvent(name, value){
+				$.post( "http://localhost:8090/addEvent", { name: name, value: value } );
+			}
+			
+			function nextMovement(node){
+			
+				var notRandomNumbers = [];
+				switch(node){
+					case 1:
+						notRandomNumbers = [4, 4, 4, 4, 4, 4, 2, 2, 3, 3];
+						break;
+					case 2:
+						notRandomNumbers = [1, 1, 1, 1, 1, 1, 1, 1, 2, 2];
+						break;
+					case 3:
+						notRandomNumbers = [1, 1, 1, 1, 1, 1, 1, 1, 3, 3];
+						break;
+					case 4:
+						notRandomNumbers = [1, 1, 1, 1, 1, 4, 5, 5, 5, 5];
+						break;
+					case 5:
+						notRandomNumbers = [4, 4, 6, 6, 7, 7, 13, 13, 10, 10];
+						break;
+					case 6:
+						notRandomNumbers = [6, 6, 6, 5, 5, 5, 7, 7, 7, 9];
+						break;
+					case 7:
+						notRandomNumbers = [6, 6, 6, 6, 7, 7, 8, 5, 5, 5];
+						break;
+					case 8:
+						notRandomNumbers = [7, 7, 7, 7, 7, 7, 7, 7, 8, 8];
+						break;
+					case 9:
+						notRandomNumbers = [6, 6, 6, 6, 6, 6, 6, 6, 9, 9];
+						break;
+					case 10:
+						notRandomNumbers = [11, 11, 11, 11, 11, 5, 5, 5, 5, 5];
+						break;
+					case 11:
+						notRandomNumbers = [11, 11, 11, 11, 12, 12, 10, 10, 10, 10];
+						break;
+					case 12:
+						notRandomNumbers = [11, 11, 11, 11, 11, 11, 11, 11, 12, 12];
+						break;
+					case 13:
+						notRandomNumbers = [5, 5, 5, 5, 5, 14, 14, 14, 14, 14];
+						break;
+					case 14:
+						notRandomNumbers = [14, 14, 14, 14, 15, 15, 13, 13, 13, 13];
+						break;
+					case 15:
+						notRandomNumbers = [14, 14, 14, 14, 14, 14, 14, 14, 15, 15];
+						break;
+					case 16:
+						notRandomNumbers = [5, 5, 5, 5, 5, 5, 5, 5, 16, 16];
+						break;
+					default:
+						alert("error");
+						break;					
+				}
+				
+				var idx = Math.floor(Math.random() * notRandomNumbers.length);
+  				return notRandomNumbers[idx];
+			
+			}
+			
+			function changeInhabitantPosition(prevNode, CurrNode){
+				$("#inhabitant").removeClass("inhabitant-"+prevNode).addClass("inhabitant-"+CurrNode);
+			}
+			
+			function changeInhabitantRedPosition(NextNode){
+				$("#inhabitant-red").removeClass();
+				$("#inhabitant-red").addClass("inhabitant-red-"+NextNode);
+			}
+			
+			function openOffEffectorsNext(node){
+				if(node == 4){
+					_this.publish("myhouse/bedroom/door_3", "1");
+				}else if(node == 10){
+					_this.publish("myhouse/bed/door_5", "1");
+				}else if(node == 13){
+					_this.publish("myhouse/bathroom/door_4", "1");
+				}else if(node == 16){
+					_this.publish("myhouse/livingroom/door_1", "1");
+				}else if(node == 2){
+					var flag;
+				
+					if($('#window_3').hasClass('window-closed')){
+						flag = "1";
+					}else{
+						flag = "0";
+					}
+					_this.publish("myhouse/bedroom/window_3", flag);
+				}else if(node == 3){
+					var flag;
+				
+					if($('#window_4').hasClass('window-closed')){
+						flag = "1";
+					}else{
+						flag = "0";
+					}
+					_this.publish("myhouse/bedroom/window_4", flag);
+				}else if(node == 12){
+					var flag;
+				
+					if($('#window_6').hasClass('window-closed')){
+						flag = "1";
+					}else{
+						flag = "0";
+					}
+					_this.publish("myhouse/bed/window_6", flag);
+				}else if(node == 15){
+					var flag;
+				
+					if($('#window_5').hasClass('window-closed')){
+						flag = "1";
+					}else{
+						flag = "0";
+					}
+					_this.publish("myhouse/bathroom/window_5", flag);
+				}else if(node == 8){
+					var flag;
+				
+					if($('#window_2').hasClass('window-closed')){
+						flag = "1";
+					}else{
+						flag = "0";
+					}
+					_this.publish("myhouse/kitchen/window_2", flag);					
+				}else if(node == 9){
+					var flag;
+				
+					if($('#window_1').hasClass('window-closed')){
+						flag = "1";
+					}else{
+						flag = "0";
+					}
+					_this.publish("myhouse/kitchen/window_1", flag);		
+				}
+			}
+			
+			function openOffEffectorsCurrent(node){
+				
+				/*doors*/
+				if(node != 4){
+					_this.publish("myhouse/bedroom/door_3", "0");
+				} 
+				if(node != 10){
+					_this.publish("myhouse/bed/door_5", "0");
+				}
+				if(node != 13){
+					_this.publish("myhouse/bathroom/door_4", "0");
+				}
+				
+				if(node != 16){
+					_this.publish("myhouse/livingroom/door_1", "0");
+				}
+				
+				/*motion*/
+				
+				if(node == 1 || node == 2 || node == 3){
+					_this.publish("myhouse/bedroom/motion_3", "1");
+					_this.publish("myhouse/bedroom/light_3", "1");
+				}else{
+					_this.publish("myhouse/bedroom/motion_3", "0");
+					_this.publish("myhouse/bedroom/light_3", "0");
+					_this.publish("myhouse/bedroom/window_3", "0");
+					_this.publish("myhouse/bedroom/window_4", "0");
+				}
+				
+				if(node == 12 || node == 11){
+					_this.publish("myhouse/bed/motion_5", "1");
+					_this.publish("myhouse/bed/light_5", "1");
+				}else{
+					_this.publish("myhouse/bed/motion_5", "0");
+					_this.publish("myhouse/bed/light_5", "0");
+					_this.publish("myhouse/bed/window_6", "0");
+				}
+				
+				if(node == 5 || node == 16){
+					_this.publish("myhouse/livingroom/motion_1", "1");
+					_this.publish("myhouse/livingroom/light_1", "1");					
+				}else{
+					_this.publish("myhouse/livingroom/motion_1", "0");
+					_this.publish("myhouse/livingroom/light_1", "0");	
+				}
+				
+				if(node == 6 || node == 7 || node == 8 || node == 9){
+					_this.publish("myhouse/kitchen/motion_2", "1");
+					_this.publish("myhouse/kitchen/light_2", "1");
+				}else{
+					_this.publish("myhouse/kitchen/motion_2", "0");
+					_this.publish("myhouse/kitchen/light_2", "0");
+					_this.publish("myhouse/kitchen/window_1", "0");
+					_this.publish("myhouse/kitchen/window_2", "0");
+				}
+				
+				if(node == 14 || node == 15){
+					_this.publish("myhouse/bathroom/motion_4", "1");
+					_this.publish("myhouse/bathroom/light_4", "1");
+				}else{
+					_this.publish("myhouse/bathroom/motion_4", "0");
+					_this.publish("myhouse/bathroom/light_4", "0");
+					_this.publish("myhouse/bathroom/window_5", "0");
+				}
+			}
+			
+			
+			/*setInterval(function(){ 				
 				
 				$.get( "http://localhost:8090/noOneAtHome", function( data ) {
 				  	
@@ -18,7 +292,7 @@
 						
 				});
 			
-			}, 60000);
+			}, 60000);*/
 			
 			
 			$("#initialize_items").click(function(){
@@ -331,13 +605,13 @@
 			/* Items*/
 
 			mosq.onconnect = function(rc){
-				if(rc=='0'){ alert("Connected successfully!");}
-				
-				_this.subscribe();
+				if(rc=='0'){ alert("Connected successfully!");}				
+				_this.subscribe();				
 				var p = document.createElement("p");
 				p.innerHTML = "CONNACK " + rc;
 				$("#debug").append(p);				
 				
+				init_sequence();
 			};			
 			mosq.ondisconnect = function(rc){
 				var p = document.createElement("p");
